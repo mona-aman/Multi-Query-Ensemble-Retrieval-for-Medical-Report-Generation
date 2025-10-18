@@ -32,9 +32,6 @@ outputs/
 output/
 results/
 checkpoints/
-models/
-!results/.gitkeep
-!models/.gitkeep
 logs/
 wandb/
 runs/
