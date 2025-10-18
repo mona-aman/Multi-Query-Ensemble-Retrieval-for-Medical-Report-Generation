@@ -1,0 +1,72 @@
+# Project Configuration
+project_name: "xrem-quick-replication"
+experiment_name: "baseline_vs_query_expansion"
+random_seed: 42
+# LLM settings for query expansion
+query_expansion:
+  llm_provider: 'fallback'  # Options: 'openai', 'fallback'
+  llm_model: 'gpt-3.5-turbo'  # Only used if provider is 'openai'
+  num_expansions: 3  # Number of query variations to generate
+# Data settings
+data:
+  dataset_name: "MIMIC-CXR-full"
+  train_size: null
+  val_size: null
+  test_size: null
+  total_size: null
+  image_size: 224
+  max_text_length: 512
+  data_dir: "./data/mimic_cxr"
+  cache_dir: "./cache"
+
+# Model settings
+models:
+  vision_encoder: "microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224"
+  text_encoder: "microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224"
+  nli_model: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract"
+  device: "cuda"  # or "cpu"
+
+# Retrieval settings
+retrieval:
+  top_i: 50  # Cosine similarity filter
+  top_j: 10  # ITM filter (not used in quick version)
+  top_k: 2   # Final number of reports
+  similarity_metric: "cosine"
+  
+# Multi-Query Ensemble Settings (Novel Method)
+ensemble:
+  num_queries: 5          # Number of query variations
+  ensemble_method: 'vote'  # 'vote' or 'score'
+
+# Novel method settings
+query_expansion:
+  enabled: true
+  method: "llm"  # Options: "llm", "paraphrase", "synonym"
+  num_expansions: 3
+  llm_provider: "openai"  # or "local"
+  llm_model: "gpt-3.5-turbo"
+  temperature: 0.7
+
+# Evaluation settings
+evaluation:
+  metrics:
+    - "bleu"
+    - "rouge"
+    - "bertscore"
+    - "meteor"
+  batch_size: 16
+  save_predictions: true
+  output_dir: "./results"
+
+# Training settings (if needed)
+training:
+  batch_size: 8
+  learning_rate: 1e-5
+  num_epochs: 5
+  warmup_steps: 100
+
+# Logging
+logging:
+  log_dir: "./logs"
+  log_level: "INFO"
+  save_every: 50

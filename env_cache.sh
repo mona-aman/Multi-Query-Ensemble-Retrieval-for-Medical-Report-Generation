@@ -1,0 +1,10 @@
+export HF_HOME=$(pwd)/.cache/hf
+export TRANSFORMERS_CACHE=$(pwd)/.cache/transformers
+export TORCH_HOME=$(pwd)/.cache/torch
+export XDG_CACHE_HOME=$(pwd)/.cache
+export TMPDIR=$(pwd)/tmp
+export TMP=$(pwd)/tmp
+export TEMP=$(pwd)/tmp
+export PIP_NO_CACHE_DIR=1
+export PIP_DISABLE_PIP_VERSION_CHECK=1
+unset HF_HUB_ENABLE_HF_TRANSFER

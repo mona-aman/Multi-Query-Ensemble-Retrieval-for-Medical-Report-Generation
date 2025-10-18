@@ -1,0 +1,11 @@
+export export HF_HOME=$(pwd)/.cache/huggingface
+export export TRANSFORMERS_CACHE=$(pwd)/.cache/transformers
+export export TORCH_HOME=$(pwd)/.cache/torch
+export export XDG_CACHE_HOME=$(pwd)/.cache
+export export TMPDIR=$(pwd)/tmp
+export export TMP=$(pwd)/tmp
+export export TEMP=$(pwd)/tmp
+export export PIP_NO_CACHE_DIR=off
+export export PIP_CACHE_DIR=$(pwd)/.cache/pip
+export export PIP_DISABLE_PIP_VERSION_CHECK=1
+export export HF_HUB_ENABLE_HF_TRANSFER=1
